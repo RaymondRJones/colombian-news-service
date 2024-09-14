@@ -321,6 +321,18 @@ function News() {
               </Typography>
             </Box>
 
+            <Box mb={4} textAlign="center">
+              <Button
+                onClick={togglePopUp}
+                variant="contained"
+                color="secondary"
+                size="large"
+                disableElevation
+              >
+                Subscribe for Updates
+              </Button>
+            </Box>
+
             <Typography variant="h5" component="h2" gutterBottom>
               Latest Manizales Articles - {currentDate}
             </Typography>
