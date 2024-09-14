@@ -1,33 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
-import React, { useState } from 'react';
+// App.js
+
+import React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import News from './News';
-/*
-import Stopwatch from './components/StopWatch';
-import TodoName from './components/Todo2';
-import BenchmarkComponent from './components/Fib';
-import Weather from './components/Weather';
-import CounterName from './Counter2';
-import Calculator from './components/Calculator';
-*/
+
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#00695f', // Example: Medellin green
+      main: '#1976d2', // Material Design blue
     },
     secondary: {
-      main: '#ffab00', // Example: Accent color
+      main: '#ffc107', // Material Design amber
     },
   },
   typography: {
-    h3: {
+    h4: {
       fontFamily: 'Roboto, sans-serif',
       fontWeight: 700,
+    },
+    h5: {
+      fontFamily: 'Roboto, sans-serif',
+      fontWeight: 500,
     },
     h6: {
       fontFamily: 'Roboto, sans-serif',
       fontWeight: 500,
+    },
+    body1: {
+      fontFamily: 'Roboto, sans-serif',
+    },
+    button: {
+      textTransform: 'none',
     },
   },
 });
@@ -35,7 +38,7 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <News/ > 
+      <News />
     </ThemeProvider>
   );
 }

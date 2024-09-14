@@ -9,7 +9,7 @@ API_KEY = os.getenv("API_KEY")
 client = openai.OpenAI(api_key=API_KEY)
 
 
-def generate_prompt_for_headlines(headlines_with_urls):
+def generate_prompt_for_headlines(headlines_with_urls, city="Medellin"):
     formatted_headlines = "\n".join(
         [
             f"{index + 1}. {headline} (URL: {url})"
@@ -23,7 +23,7 @@ def generate_prompt_for_headlines(headlines_with_urls):
         "to identify topics relevant to specific audiences. "
         "Given the following list of headlines and their URLs, identify the "
         "ones that would be of interest to digital nomads living in"
-        "Medellin, Colombia. "
+        f"{city}, Colombia. "
         "Consider factors such as local events, protests, riots"
         "safety "
         "would appeal to digital nomads. "
@@ -75,7 +75,10 @@ def find_relevant_headlines(file_path, output_file_name):
             headline = row[0].strip()
             url = row[1].strip()
             headlines.append((headline, url))
-    base_prompt, article_prompt = generate_prompt_for_headlines(headlines)
+    if "manizales" in file_path.lower():
+        base_prompt, article_prompt = generate_prompt_for_headlines(headlines, "Manizales")
+    else:
+        base_prompt, article_prompt = generate_prompt_for_headlines(headlines, "Medellin")
 
     # Query OpenAI
     response = client.chat.completions.create(
