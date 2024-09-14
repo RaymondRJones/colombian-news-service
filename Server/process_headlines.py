@@ -64,7 +64,7 @@ def translate_using_gpt(headlines_to_translate):
     return ans
 
 
-def find_relevant_headlines(file_path):
+def find_relevant_headlines(file_path, output_file_name):
     headlines = []
 
     # Read headlines from CSV file
@@ -97,7 +97,7 @@ def find_relevant_headlines(file_path):
 
     english_headlines = translate_using_gpt(spanish_headlines)
     print("english headlines", english_headlines)
-    output_file = "../Frontend/public/colombian_news_info.csv"
+    output_file = "../Frontend/public/" + output_file_name
     with open(output_file, mode="w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile, delimiter="|")
         writer.writerow(["Headline", "URL"])
@@ -118,4 +118,5 @@ def find_relevant_headlines(file_path):
     print("Successfully written")
 
 
-find_relevant_headlines("headlines_and_links.csv")
+# find_relevant_headlines("headlines_and_links.csv", "colombian_news_info.csv")
+find_relevant_headlines("lapatria_manizales_headlines.csv", "manizales_news_info.csv")
